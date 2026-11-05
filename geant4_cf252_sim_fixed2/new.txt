@@ -1,0 +1,4 @@
+Build the spectrum of neutrons, accepted with helium.
+The Maxvel is expected -> fit ?
+Efficiency sould be took into account?
+Different section? 
