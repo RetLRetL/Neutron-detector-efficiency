@@ -127,7 +127,15 @@ int main(int argc, char** argv)
            << config.peThickness / cm
            << " cm"
            << G4endl;
-    G4cout << "Cf-252/event : "
+    G4cout << "Generation mode: "
+           << (Settings::GENERATION_MODE == Settings::GenerationMode::GEANT
+                   ? "GEANT (RadioactiveDecay)"
+                   : "FREYA (spontaneous fission)")
+           << G4endl;
+
+    G4cout << (Settings::GENERATION_MODE == Settings::GenerationMode::GEANT
+                   ? "Cf-252 nuclei/event: "
+                   : "Cf-252 fissions/event: ")
            << Settings::N_IONS
            << G4endl;
     G4cout << G4endl;

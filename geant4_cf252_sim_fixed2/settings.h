@@ -13,7 +13,7 @@ namespace Settings
     inline const G4double DEFAULT_PE_THICKNESS = 20.0 * cm;
 
     // Number of Geant4 events if not supplied on the command line.
-    inline constexpr G4int DEFAULT_N_EVENTS = 1;
+    inline constexpr G4int DEFAULT_N_EVENTS = 100;
 
     // Number of Cf-252 nuclei generated in every Geant4 event.
     inline constexpr G4int N_IONS = 100;
@@ -22,7 +22,7 @@ namespace Settings
     inline constexpr bool ENABLE_VISUALIZATION = false;
 
     // Enable / disable measurement of BeamOn execution time.
-    inline constexpr bool ENABLE_TIMING = false;
+    inline constexpr bool ENABLE_TIMING = true;
 
     // ================================================================
     // World

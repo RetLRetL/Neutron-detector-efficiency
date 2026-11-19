@@ -1,6 +1,7 @@
 #include "stepping_action.h"
 #include "event_action.h"
 #include "run_action.h"
+#include "settings.h"
 
 #include "G4LogicalVolume.hh"
 #include "G4Neutron.hh"
@@ -27,12 +28,24 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     // ================================================================
 
     if (track->GetDefinition() == G4Neutron::NeutronDefinition() &&
-        track->GetCurrentStepNumber() == 1 &&
-        track->GetParentID() != 0)
+        track->GetCurrentStepNumber() == 1)
     {
         const G4VProcess* creator = track->GetCreatorProcess();
 
-        if (creator && creator->GetProcessName() == "RadioactiveDecay")
+        // In the original GEANT branch, fission neutrons are secondaries
+        // created by RadioactiveDecay. In the FREYA branch, the same
+        // neutrons are primary particles (ParentID == 0), because FREYA has
+        // already performed the fission before Geant4 tracking starts.
+        const G4bool fromGeant4RadioactiveDecay =
+            track->GetParentID() != 0 &&
+            creator &&
+            creator->GetProcessName() == "RadioactiveDecay";
+
+        const G4bool fromFreyaPrimary =
+            Settings::GENERATION_MODE == Settings::GenerationMode::FREYA &&
+            track->GetParentID() == 0;
+
+        if (fromGeant4RadioactiveDecay || fromFreyaPrimary)
             fEventAction->GetRunAction()->AddBornNeutron();
     }
 
