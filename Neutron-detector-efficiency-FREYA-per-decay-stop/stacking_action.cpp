@@ -11,6 +11,8 @@
 #include "G4Track.hh"
 #include "G4VProcess.hh"
 
+#include "G4Ions.hh"
+
 StackingAction::StackingAction(EventAction* eventAction)
     : fEventAction(eventAction)
 {
@@ -20,6 +22,17 @@ G4ClassificationOfNewTrack StackingAction::ClassifyNewTrack(
     const G4Track* track
 )
 {
+    if (Settings::GENERATION_MODE == Settings::GenerationMode::GEANT &&
+        track->GetParentID() != 0)
+    {
+        // Осколки деления — это тяжёлые ионы (масса > 4, т.е. тяжелее альфа-частицы),
+        // рождённые при распаде первичного ядра Cf-252.
+        const auto* ion = dynamic_cast<const G4Ions*>(track->GetDefinition());
+        if (ion && ion->GetAtomicMass() > 4)
+        {
+            return fKill;
+        }
+    }
     // Count a neutron when the track is created/stacked, not at its first
     // transport step. Thus neutrons from a source that is stopped before
     // transport are still included in BornNeutrons.
