@@ -191,6 +191,22 @@ int main(int argc, char** argv)
 
     runManager->Initialize();
 
+    if (Settings::GENERATION_MODE == Settings::GenerationMode::GEANT)
+    {
+        G4UImanager* uiManager = G4UImanager::GetUIpointer();
+
+        const G4int status = uiManager->ApplyCommand(
+            "/process/had/rdm/setRadioactiveDecayFile "
+            "98 252 z98.a252_modify.txt"
+        );
+
+        if (status != 0)
+        {
+            G4cerr << "Failed to load custom Cf-252 decay data!" << G4endl;
+            return 1;
+        }
+    }
+
     if (Settings::ENABLE_VISUALIZATION)
     {
         ui = new G4UIExecutive(argc, argv);

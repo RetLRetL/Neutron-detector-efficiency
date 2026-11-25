@@ -13,12 +13,12 @@ namespace Settings
     inline const G4double DEFAULT_PE_THICKNESS = 20.0 * cm;
 
     // Number of Geant4 events if not supplied on the command line.
-    inline constexpr G4int DEFAULT_N_EVENTS = 200;
+    inline constexpr G4int DEFAULT_N_EVENTS = 1;
 
     // Number of source points processed in every Geant4 event.
     // GEANT mode: one stationary Cf-252 nucleus is placed at each point.
     // FREYA mode: one spontaneous Cf-252 fission is generated at each point.
-    inline constexpr G4int N_IONS = 100;
+    inline constexpr G4int N_IONS = 10;
 
     // Select only the decay/fission mechanism. The source geometry and
     // random-position algorithm are identical in both modes.
@@ -30,7 +30,7 @@ namespace Settings
 
     // Change this one line to switch between the original Geant4 decay and
     // FREYA-generated spontaneous fission products.
-    inline constexpr GenerationMode GENERATION_MODE = GenerationMode::FREYA;
+    inline constexpr GenerationMode GENERATION_MODE = GenerationMode::GEANT;
 
     // Enable / disable Geant4 visualization.
     inline constexpr bool ENABLE_VISUALIZATION = false;

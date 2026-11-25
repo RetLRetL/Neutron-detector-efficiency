@@ -1,0 +1,77 @@
+============================
+     Cf-252 / He-3 RUN
+============================
+PE thickness : 1 cm
+Events       : 10
+Sample center Y: 1 cm
+Generation mode: GEANT (RadioactiveDecay)
+Cf-252 nuclei/event: 100
+
+
+**************************************************************
+ Geant4 version Name: geant4-11-04-patch-02 [MT]   (12-June-2026)
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+<<< Geant4 Physics List simulation engine: FTFP_BERT_HP
+
+Checking overlaps for volume Envelope:0 (G4Box) ... OK! 
+Checking overlaps for volume SteelTube:0 (G4Tubs) ... OK! 
+Checking overlaps for volume SteelEndCapMinus:0 (G4Tubs) ... OK! 
+Checking overlaps for volume SteelEndCapPlus:1 (G4Tubs) ... OK! 
+Checking overlaps for volume Wire:0 (G4Tubs) ... OK! 
+Checking overlaps for volume Polyethylene:0 (G4SubtractionSolid) ... OK! 
+Checking overlaps for volume Cf252Sample:0 (G4Tubs) ... OK! 
+Checking overlaps for volume He3Gas:0 (G4SubtractionSolid) ... OK! 
+
+ hInelastic FTFP_BERT_HP : threshold between BERT and FTFP is over the interval 
+ for pions :   3 to 6 GeV
+ for kaons :   3 to 6 GeV
+ for proton :  3 to 6 GeV
+ for neutron : 3 to 6 GeV
+
+@@@ G4ParticleHPInelasticData instantiated for particle neutron data directory variable is G4NEUTRONHPDATA pointing to /home/retl/geant4/share/Geant4/data/G4NDL4.7.1
+NeutronHP: /Capture file for Z = 18, A = 36 is not found and NeutronHP will use /home/retl/geant4/share/Geant4/data/G4NDL4.7.1/Capture/CrossSection/18_37_Argon
+NeutronHP: /Elastic file for Z = 18, A = 36 is not found and NeutronHP will use /home/retl/geant4/share/Geant4/data/G4NDL4.7.1/Elastic/CrossSection/18_37_Argon
+NeutronHP: /Inelastic file for Z = 18, A = 36 is not found and NeutronHP will use /home/retl/geant4/share/Geant4/data/G4NDL4.7.1/Inelastic/CrossSection/18_37_Argon
+NeutronHP: /Capture file for Z = 18, A = 38 is not found and NeutronHP will use /home/retl/geant4/share/Geant4/data/G4NDL4.7.1/Capture/CrossSection/18_39_Argon
+NeutronHP: /Elastic file for Z = 18, A = 38 is not found and NeutronHP will use /home/retl/geant4/share/Geant4/data/G4NDL4.7.1/Elastic/CrossSection/18_39_Argon
+NeutronHP: /Inelastic file for Z = 18, A = 38 is not found and NeutronHP will use /home/retl/geant4/share/Geant4/data/G4NDL4.7.1/Inelastic/CrossSection/18_39_Argon
+G4PhysicsListHelper::RegisterProcess :RadioactiveDecay for GenericIon with  type/subtype =6/210  is has same subType as RadioactiveDecay for GenericIon
+It will not be added !!
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run0111
+      issued by : G4PhysicsListHelper::RegisterProcess
+Duplication of processes
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+G4PhysicsListHelper::RegisterProcess :RadioactiveDecay for triton with  type/subtype =6/210  is has same subType as RadioactiveDecay for triton
+It will not be added !!
+
+-------- WWWW ------- G4Exception-START -------- WWWW -------
+*** G4Exception : Run0111
+      issued by : G4PhysicsListHelper::RegisterProcess
+Duplication of processes
+*** This is just a warning message. ***
+-------- WWWW -------- G4Exception-END --------- WWWW -------
+
+
+-------- EEEE ------- G4Exception-START -------- EEEE -------
+*** G4Exception : HAD_RDM_001
+      issued by : G4VRadioactiveDecay::AddUserDecayDataFile()
+/absolute/path/z98.a252_modify.txt does not exist! 
+
+*** Fatal Exception *** core dump ***
+ **** Track information is not available at this moment
+ **** Step information is not available at this moment
+
+-------- EEEE -------- G4Exception-END --------- EEEE -------
+
+
+*** G4Exception: Aborting execution ***
