@@ -1,0 +1,7 @@
+/main
+*.o
+*.d
+/build/
+
+# ROOT output from the standalone detected-neutron energy parser
+neutron_spectra.root
